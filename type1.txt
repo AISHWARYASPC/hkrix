@@ -1,0 +1,32 @@
+	public void createReport(String dsn,String username,String password,int recordnumber,String sheetcode,String dataset,int sheetnumber,String userid,String format)
+	{
+		log.info("New download thread started,SheetNumber:"+sheetnumber+" For user:"+userid+" On"+new java.util.Date());
+		if (dataset.trim().equals("C") || dataset.trim().equals("H")|| dataset.trim().equals("L")) {
+			
+
+			String filesPath = null,filesPathNew = null,excelFilesPath=null;
+			if (dataset.trim().equals("C")){
+				 filesPath = getServlet().getServletContext().getRealPath(
+						"/WEB-INF/conf/data/ExcelFiles/" + "XLS_TemplateNames.properties");
+				 filesPathNew= getServlet().getServletContext().getRealPath(
+						"/WEB-INF/conf/data/ExcelFiles/" + "XLSX_TemplateNames.properties");
+				excelFilesPath = getServlet().getServletContext().getRealPath(
+						"/WEB-INF/conf/data/ExcelFiles/")
+						+ "/";
+			}else if(dataset.trim().equals("H")){
+				 filesPath = getServlet().getServletContext().getRealPath(
+							"/WEB-INF/conf/data/ExcelFiles2010/" + "XLS_TemplateNames.properties");
+					 filesPathNew= getServlet().getServletContext().getRealPath(
+							"/WEB-INF/conf/data/ExcelFiles2010/" + "XLSX_TemplateNames.properties");
+					excelFilesPath = getServlet().getServletContext().getRealPath(
+							"/WEB-INF/conf/data/ExcelFiles2010/")
+							+ "/";
+			}else if(dataset.trim().equals("L")){
+				 filesPath = getServlet().getServletContext().getRealPath(
+						"/WEB-INF/conf/data/ExcelFilesLegacy/" + "XLS_TemplateNames.properties");
+				 filesPathNew= getServlet().getServletContext().getRealPath(
+						"/WEB-INF/conf/data/ExcelFilesLegacy/" + "XLSX_TemplateNames.properties");
+				excelFilesPath = getServlet().getServletContext().getRealPath(
+						"/WEB-INF/conf/data/ExcelFilesLegacy/")
+						+ "/";
+			}
